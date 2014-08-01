@@ -1,0 +1,49 @@
+$blue: #f9d9f9;
+$grey: #eee;
+$darkgrey: #e4e4e4;
+
+
+#calendar {
+	padding-top: 20px;
+	padding-bottom: 20px;
+
+	.timeOfDay {
+		height: 720px;
+		text-align: right;
+		display: inline-block;
+		padding-right: 10px;
+
+		ul {
+			li {
+				list-style: none;
+
+				&.topOfHour {
+					font-size: 14px;
+					font-weight: 400;
+				}
+
+				&.halfHour {
+					font-size: 10px;
+				}
+
+				& span.halfHour {
+					font-size: 10px;
+					padding-left: 3px;
+				}
+			}
+		}
+	}
+
+	.container {
+		width: 600px;
+		height: 720px;
+		background-color: $grey;
+		padding-left: 10px;
+		padding-right: 10px;
+		display: inline-block;
+		border-left: 1px solid $darkgrey;
+	}
+}
+
+
+
