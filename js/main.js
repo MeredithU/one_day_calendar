@@ -3,7 +3,7 @@
 ***************************************************/
 
 function calendarLayoutInit() {
-	/* Creating calendar layout */
+	// Creating calendar layout
 	var calendarSection = document.createElement("section");
 	calendarSection.id = "calendar";	
 
@@ -12,9 +12,7 @@ function calendarLayoutInit() {
 
 	var unorderedList = document.createElement("ul");
 
-	/**************************************************
-		Look at creating a function to reduce this code!
-	**************************************************/
+	// Look at creating a function to reduce this code!
 	for (var i = 9; i < 22; i++) {
 		if (i < 13) {
 			var topOfHourList = document.createElement("li");
