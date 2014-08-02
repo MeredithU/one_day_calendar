@@ -1,11 +1,10 @@
+$white: #fff;
 $blue: #f9d9f9;
 $grey: #eee;
 $darkgrey: #e4e4e4;
 
 
 #calendar {
-	padding-top: 20px;
-	padding-bottom: 20px;
 
 	.timeOfDay {
 		height: 720px;
@@ -16,6 +15,7 @@ $darkgrey: #e4e4e4;
 		ul {
 			li {
 				list-style: none;
+				padding-bottom: 14.8px;
 
 				&.topOfHour {
 					font-size: 14px;
@@ -41,7 +41,10 @@ $darkgrey: #e4e4e4;
 		padding-left: 10px;
 		padding-right: 10px;
 		display: inline-block;
-		border-left: 1px solid $darkgrey;
+
+		.timeBlock {
+			background-color: $white; 
+		}
 	}
 }
 
