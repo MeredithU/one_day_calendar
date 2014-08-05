@@ -1,9 +1,6 @@
-/**************************************************
-	Create calendar layout
-***************************************************/
-
+// Create calendar layout
 function calendarLayoutInit() {
-	// Creating calendar layout
+	
 	var calendarSection = document.createElement("section");
 	calendarSection.id = "calendar";	
 
