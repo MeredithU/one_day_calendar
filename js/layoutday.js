@@ -1,21 +1,5 @@
 function layOutDay (events) {
 
-	// Max width of calendar grid
-	var maxWidth = 600;
-
-	// Calendar grid padding 
-	var leftPadding = 120;
-
-	// Event border padding
-	var borderPadding;
-
-	// To hold all event conflicts
-	var conflictingEvents = [];
-
-	// An array of arrays to place events in columns to detemine their left position 
-	var arrayOfColumns = [];
-
-
 	// Sort events by start time
 	events.sort(function (a, b) {
 		if (a.start > b.start) {
@@ -27,121 +11,56 @@ function layOutDay (events) {
 		return 0;
 	});
 
-
-	// Loop through each event to set width and left position properties 
-	// and render events onto the calendar
+	// Loop through each event to set the width and left position attributes
 	events.forEach(function(entry, index) {
 		var currentEvent = entry;
 		var currentEventIndex = index;
 
 		currentEvent.width;
-		currentEvent.left;
 		currentEvent.column;
 
-		setEventProperties(currentEvent, currentEventIndex);
+		setEventAttributes(events, currentEvent, currentEventIndex);
 	});
 
+	// Assign a column number to each event which will be used to determine the left position
+	assignColumnNumber(events);
 
-	function setEventProperties (currentEvent, currentEventIndex) {
-		var conflictingEventsList = findEventConflicts(events, currentEventIndex);
-		var numberOfEventConflicts = conflictingEventsList.length;
-
-		// If there are event conflicts, find their widths
-		if (numberOfEventConflicts > 1) {
-			findEventWidth(numberOfEventConflicts, currentEventIndex);
-		} else {
-			currentEvent.width = maxWidth;
-		}
-
-		assignColumnNumber(currentEventIndex);
-	};
-
-
-	// Find all events the currentEvent conflicts with 
-	function findEventConflicts (allEvents, currentEventIndex) {
-		for (var i = 0; i <= currentEventIndex; i++) {
-			if (allEvents[currentEventIndex].start < allEvents[i].end) {
-				conflictingEvents.push(allEvents[i]);
-			}		
-		}
-
-		var conflictingEventsList = conflictingEvents;
-
-		// Reset the array that holds conflicting events as we loop through each new event
-		conflictingEvents = [];
-
-		return conflictingEventsList;
-	};
-
-
-	// Find event widths
-	function findEventWidth (numberOfEventConflicts, currentEventIndex) {
-		for (var i = currentEventIndex; i > currentEventIndex - numberOfEventConflicts; i--) {
-			events[i].width = (maxWidth / numberOfEventConflicts);
-		}
-	};
-
-
-	function findLeftPosition (currentEventIndex) {
-		events[currentEventIndex].left = ((events[currentEventIndex].width * events[currentEventIndex].column) + leftPadding);
-	};
-
-
-	// Determine column number (starting from 0) so conflicting events are side by side
-	function assignColumnNumber (currentEventIndex) {
-		// Save the first event
-		if (currentEventIndex == 0) {
-			arrayOfColumns[0] = [];
-			arrayOfColumns[0].push(events[0]);
-			events[0].column = 0;
-		
-		} else if (currentEventIndex > 0) {
-			
-			for (var i = 0; i < arrayOfColumns.length; i++) {
-				var columnNumber = arrayOfColumns[i];
-
-				// if the start time of the currentEvent is greater than the end of the last event in that column,
-				// push to the bottom of that column array
-				if (columnNumber[columnNumber.length - 1].end < events[currentEventIndex].start) {
-					arrayOfColumns[i].push(events[currentEventIndex]);
-					events[currentEventIndex].column = i;
-					break;
-
-				} else if (typeof arrayOfColumns[i + 1] != 'object') {
-						arrayOfColumns[i + 1] = [];
-						arrayOfColumns[i + 1].push(events[currentEventIndex]);
-						events[currentEventIndex].column = i + 1;
-						break;
-				} 
-			}
-		}
-	};
-
-	console.log(events);
-	console.log(events[0]);
-	console.log(events[1]);
-	console.log(events[2]);
-	console.log(events[3]);
 	renderEvents(events);
 
 	// Map events onto the calendar
 	function renderEvents (events) {
+		
+		// Width of div container to display hours of the day
+		var leftPadding = 130;
+
+		// Border padding found on each event
+		var borderPadding = 5;
+
 		for (var i = 0; i < events.length; i++) {
-			findLeftPosition(i);
-			
+			findLeftPosition(events, i, leftPadding, borderPadding);
+
 			var calendarGrid = document.getElementById("grid");
 			var timeBlockDiv = document.createElement("div");
+			var sampleItemSpan = document.createElement("span");
+			var sampleLocationSpan = document.createElement("span");
 
-			timeBlockDiv.className = "timeBlock";
+			timeBlockDiv.className = "time-block";
 			timeBlockDiv.style.height = (events[i].end - events[i].start) + "px";
 			timeBlockDiv.style.position = "absolute";
 			timeBlockDiv.style.top = (events[i].start + 30) + "px";
-			timeBlockDiv.style.width = events[i].width + "px";
+			timeBlockDiv.style.width = (events[i].width - borderPadding) + "px";
 			timeBlockDiv.style.left = events[i].left + "px";
 
-			calendarGrid.appendChild(timeBlockDiv);
-		}
-			
-	};
+			sampleItemSpan.className = "sample-item";
+			sampleLocationSpan.className = "sample-location";
+			var sampleItemText = document.createTextNode("Sample Item");
+			var sampleLocationText = document.createTextNode("Sample Location"); 
 
-};
+			sampleItemSpan.appendChild(sampleItemText);
+			sampleLocationSpan.appendChild(sampleLocationText);
+			timeBlockDiv.appendChild(sampleItemSpan);
+			timeBlockDiv.appendChild(sampleLocationSpan);
+			calendarGrid.appendChild(timeBlockDiv);
+		}		
+	}
+}

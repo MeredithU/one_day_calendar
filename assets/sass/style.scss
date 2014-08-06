@@ -1,12 +1,17 @@
+
+/* Common colors */
 $white: #fff;
-$blue: #f9d9f9;
-$grey: #eee;
-$darkgrey: #e4e4e4;
+$blue: #4c6ea8;
+$grey: #ebebeb;
+$lightgrey: #d4d4d4;
+$mediumgrey: #b8b8b8;
+$darkgrey: #787878;
 
 
 #calendar {
+	font-family: "Lucida Grande", Geneva, sans-serif;
 
-	.timeOfDay {
+	.time-of-day {
 		height: 720px;
 		text-align: right;
 		display: inline-block;
@@ -17,18 +22,21 @@ $darkgrey: #e4e4e4;
 				list-style: none;
 				padding-bottom: 14.8px;
 
-				&.topOfHour {
-					font-size: 14px;
+				&.top-of-hour {
+					color: $darkgrey;
+					font-size: 15px;
 					font-weight: 400;
 				}
 
-				&.halfHour {
+				&.half-hour {
+					color: $mediumgrey;
 					font-size: 10px;
 				}
 
-				& span.halfHour {
+				& span.half-hour {
+					color: $mediumgrey;
 					font-size: 10px;
-					padding-left: 3px;
+					padding-left: 5px;
 				}
 			}
 		}
@@ -41,12 +49,27 @@ $darkgrey: #e4e4e4;
 		padding-left: 10px;
 		padding-right: 10px;
 		display: inline-block;
+		border-left: 1px solid $lightgrey;
 
-		.timeBlock {
-			background-color: $white; 
+		.time-block {
+			background-color: $white;
+			border: 1px solid $lightgrey;
+			border-left: 4px solid $blue;
+		}
+
+		.sample-item {
+			color: $blue;
+			font-size: 14px;
+			display: block;
+			padding-left: 10px;
+			padding-top: 10px;
+		}
+
+		.sample-location {
+			color: $mediumgrey;
+			font-size: 10px;
+			padding-left: 10px;
+			padding-top: 10px;
 		}
 	}
 }
-
-
-

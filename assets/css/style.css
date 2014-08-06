@@ -1,25 +1,45 @@
-#calendar .timeOfDay {
-  height: 720px;
-  text-align: right;
-  display: inline-block;
-  padding-right: 10px; }
-  #calendar .timeOfDay ul li {
-    list-style: none;
-    padding-bottom: 14.8px; }
-    #calendar .timeOfDay ul li.topOfHour {
+/* Common colors */
+#calendar {
+  font-family: "Lucida Grande", Geneva, sans-serif; }
+  #calendar .time-of-day {
+    height: 720px;
+    text-align: right;
+    display: inline-block;
+    padding-right: 10px; }
+    #calendar .time-of-day ul li {
+      list-style: none;
+      padding-bottom: 14.8px; }
+      #calendar .time-of-day ul li.top-of-hour {
+        color: #787878;
+        font-size: 15px;
+        font-weight: 400; }
+      #calendar .time-of-day ul li.half-hour {
+        color: #b8b8b8;
+        font-size: 10px; }
+      #calendar .time-of-day ul li span.half-hour {
+        color: #b8b8b8;
+        font-size: 10px;
+        padding-left: 5px; }
+  #calendar .container {
+    width: 600px;
+    height: 720px;
+    background-color: #ebebeb;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: inline-block;
+    border-left: 1px solid #d4d4d4; }
+    #calendar .container .time-block {
+      background-color: white;
+      border: 1px solid #d4d4d4;
+      border-left: 4px solid #4c6ea8; }
+    #calendar .container .sample-item {
+      color: #4c6ea8;
       font-size: 14px;
-      font-weight: 400; }
-    #calendar .timeOfDay ul li.halfHour {
-      font-size: 10px; }
-    #calendar .timeOfDay ul li span.halfHour {
+      display: block;
+      padding-left: 10px;
+      padding-top: 10px; }
+    #calendar .container .sample-location {
+      color: #b8b8b8;
       font-size: 10px;
-      padding-left: 3px; }
-#calendar .container {
-  width: 600px;
-  height: 720px;
-  background-color: #eeeeee;
-  padding-left: 10px;
-  padding-right: 10px;
-  display: inline-block; }
-  #calendar .container .timeBlock {
-    background-color: white; }
+      padding-left: 10px;
+      padding-top: 10px; }
