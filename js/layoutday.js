@@ -31,6 +31,7 @@ function layOutDay(events) {
 		
 		var leftPadding = 130, // Width of div container to display hours of the day
 				borderPadding = 5, // Border padding found on each event
+				containerPadding = 33, // Top padding of calendar grid
 				calendarGrid,
 				timeBlockDiv,
 				sampleItemSpan,
@@ -50,13 +51,13 @@ function layOutDay(events) {
 			timeBlockDiv.className = "time-block";
 			timeBlockDiv.style.height = (events[i].end - events[i].start) + "px";
 			timeBlockDiv.style.position = "absolute";
-			timeBlockDiv.style.top = (events[i].start + 30) + "px";
+			timeBlockDiv.style.top = (events[i].start + containerPadding) + "px";
 			timeBlockDiv.style.width = (events[i].width - borderPadding) + "px";
 			timeBlockDiv.style.left = events[i].left + "px";
 
 			sampleItemSpan.className = "sample-item";
-			sampleLocationSpan.className = "sample-location";
 			sampleItemText = document.createTextNode("Sample Item");
+			sampleLocationSpan.className = "sample-location";
 			sampleLocationText = document.createTextNode("Sample Location"); 
 
 			sampleItemSpan.appendChild(sampleItemText);

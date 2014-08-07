@@ -13,7 +13,7 @@ function setEventAttributes (events, currentEvent, currentEventIndex) {
 	}
 }
 
-// Loop through the events array and return an array of colliding events with the present current event
+// Loop through the events array and return an array of colliding events with the current event
 function findCollidingEvents (events, currentEventIndex) {
 	
 	// Will contain colliding events
@@ -28,7 +28,7 @@ function findCollidingEvents (events, currentEventIndex) {
 	return listOfCollidingEvents;
 }
 
-// Find the widths of the colliding events, determined by the number of collisions
+// Find the widths of the colliding events determined by the number of collisions
 function findEventWidth (events, numberOfCollidingEvents, currentEventIndex, maxWidth) {
 	var currentWidth;
 
@@ -75,7 +75,7 @@ function assignColumnNumber (events) {
 				columnNumber = eventColumns[j];
 
 				// If the start time of the current event is greater than the end of the last event in that column,
-				// push to the bottom of that nested array
+				// push the event to the bottom of that nested array
 				if (columnNumber[columnNumber.length - 1].end < events[i].start) {
 					eventColumns[j].push(events[i]);
 					events[i].column = j;

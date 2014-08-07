@@ -4,7 +4,6 @@ function calendarLayoutInit() {
 	var calendarSection,
 			timeOfDayDiv,
 			timeOfDayUl,
-			twelveHourClock,
 			calendarGridDiv;
 
 	calendarSection = document.createElement("section");
@@ -21,8 +20,8 @@ function calendarLayoutInit() {
 		return document.createTextNode(amOrPm);
 	}
 
-	// Display a 12 hour clock
-	function topOfHour (hourOfDay) {
+	// Display top of the hour in a 12 hour format
+	function topOfHour (hourOfDay, twelveHourClock) {
 		var topOfHourList,
 				timeSpan,
 				hourText,
@@ -53,7 +52,7 @@ function calendarLayoutInit() {
 	}
 
 	// Display every half hour
-	function halfHour (hourOfDay) {
+	function halfHour (hourOfDay, twelveHourClock) {
 		var halfHourList,
 				timeSpan,
 				halfHourText;
@@ -76,6 +75,8 @@ function calendarLayoutInit() {
 
 	// Loop from 9 through 22 to output a 12 hour clock
 	for (var i = 9; i < 22; i++) {
+		var twelveHourClock;
+
 		if (i < 13) {
 			topOfHour(i);
 			halfHour (i);
@@ -84,11 +85,11 @@ function calendarLayoutInit() {
 			twelveHourClock = i - 12;
 
 			if (twelveHourClock === 9) {
-				topOfHour(i);
+				topOfHour(i, twelveHourClock);
 			}
 			else {
-				topOfHour(i);
-				halfHour(i);
+				topOfHour(i, twelveHourClock);
+				halfHour(i, twelveHourClock);
 			}
 		}
 	}
